@@ -159,6 +159,9 @@ Forwarder::onIncomingInterest(Face& inFace, const Interest& interest)
 void
 Forwarder::onInterestLoop(Face& inFace, const Interest& interest)
 {
+  std::cerr << "onInterestLoop face=" << inFace.getId() << " interest="
+      << interest.getName() << "\n";
+
   // if multi-access or ad hoc face, drop
   if (inFace.getLinkType() != ndn::nfd::LINK_TYPE_POINT_TO_POINT) {
     NFD_LOG_DEBUG("onInterestLoop face=" << inFace.getId() <<
